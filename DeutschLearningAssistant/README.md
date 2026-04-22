@@ -119,6 +119,7 @@ Each document stored in MongoDB follows this schema:
 .
 ├── app.py          # Main Streamlit application
 ├── .env            # Environment variables (not committed to version control)
+└── run_app.py      # Programmatic launcher (useful for packaging / IDEs)
 └── README.md
 ```
 
