@@ -4,6 +4,12 @@ A Streamlit app for building and quizzing yourself on a personal German vocabula
 
 ---
 
+## Problem Statement
+
+I identified a personal inefficiency in my language-learning process, where vocabulary was being tracked manually using an Excel-based system. This approach lacked structure and did not support effective long-term retention. To address this, I engineered a dedicated solution focused on improving vocabulary acquisition through active recall and spaced repetition.
+
+---
+
 ## Features
 
 - **Add Vocabulary** — Save German words with translations, verb forms, example sentences, and dictionary links.
