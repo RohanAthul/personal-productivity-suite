@@ -1,72 +1,70 @@
 # 💬 Ollama Local Chat
 
-A minimal Streamlit-based chat interface for running conversations with local LLMs via [Ollama](https://ollama.com/).
+A clean, minimal chat interface built with Streamlit for having conversations with local LLMs through [Ollama](https://ollama.com/) — no API keys, no cloud, no data leaving your machine.
 
 ---
+
+## Problem Statement
+
+Modern LLM-based coding assistants significantly improve developer productivity, particularly when working with unfamiliar syntax, libraries, or workflows. However, most commonly used models are cloud-based and optimized for high capability rather than efficiency, often exceeding the actual needs of everyday regular development tasks.
+
+In practice, lightweight and fast models can already provide sufficient utility for many programming use cases, especially when the primary requirement is rapid natural-language guidance rather than deep reasoning. This raises a practical question: how far can model size be reduced while still maintaining a useful coding assistant experience?
+
+This project explores that trade-off by building and experimenting with a fully local LLM chat interface using Ollama. The goal is to evaluate whether smaller, efficient models (e.g. 8B-class models) can deliver a responsive and effective developer experience comparable to larger hosted systems, while offering the benefits of local execution such as privacy, speed, and offline availability.
+
+--
 
 ## Features
 
-- **Model selection** — automatically detects all models you have pulled in Ollama and lets you switch between them from the sidebar
-- **Streaming responses** — tokens stream in real time with a live cursor, just like ChatGPT
-- **Persistent chat history** — conversation context is maintained across turns within the same session
-- **Fully local** — no API keys, no data leaving your machine
+- **Auto model detection** — pulls your locally available Ollama models and lets you switch between them via the sidebar
+- **Real-time streaming** — responses stream token-by-token with a live cursor, just like a hosted chat UI
+- **Persistent context** — full conversation history is kept in session state and sent with every request
+- **Offline-first** — runs entirely on your local machine
 
 ---
 
-## Prerequisites
+## Requirements
 
-| Requirement | Version |
-|---|---|
-| Python | 3.8+ |
-| [Ollama](https://ollama.com/download) | Latest |
-| At least one pulled model | e.g. `ollama pull llama3` |
+- Python **3.8+**
+- [Ollama](https://ollama.com/download) installed and running
+- At least one model pulled (e.g. `ollama pull llama3`)
 
 ---
 
 ## Installation
 
 ```bash
-# 1. Clone or copy the project
+# Clone the repo
 git clone <your-repo-url>
 cd <project-folder>
 
-# 2. Install dependencies
+# Install dependencies
 pip install streamlit ollama
 ```
 
 ---
 
-## Usage
+## Running the App
 
-**Option 1 — standard Streamlit CLI**
+**Option 1 — Streamlit CLI** *(recommended)*
+
 ```bash
-# 1. Make sure Ollama is running
+# Start Ollama if it isn't already running
 ollama serve
 
-# 2. Launch the app
+# Launch the app
 streamlit run app.py
 ```
 
-**Option 2 — via `run_app.py`**
+**Option 2 — Convenience launcher**
 
-`run_app.py` is a convenience launcher that invokes Streamlit programmatically, which is useful when packaging the app as an executable (e.g. with PyInstaller) or running it from an IDE without a terminal.
+`run_app.py` starts Streamlit programmatically, which is handy when running from an IDE or packaging with PyInstaller.
 
 ```bash
 python run_app.py
 ```
 
-It resolves `app.py` relative to the current working directory and starts Streamlit with `developmentMode` disabled, so it behaves like a production build.
-
-Then open [http://localhost:8501](http://localhost:8501) in your browser.
-
----
-
-## How It Works
-
-1. On startup, the app calls `ollama.list()` to fetch your locally available models and populates the sidebar dropdown.
-2. User messages are appended to `st.session_state.messages`, which acts as the full conversation history.
-3. Each response is streamed from Ollama chunk-by-chunk and rendered progressively with a `▌` cursor until complete.
-4. The finished response is saved back to the session history, keeping the full context for future turns.
+Either way, open **http://localhost:8501** in your browser once the app starts.
 
 ---
 
@@ -74,29 +72,31 @@ Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ```
 .
-├── app.py           # Streamlit chat application
-└── run_app.py       # Programmatic launcher (useful for packaging / IDEs)
+├── app.py          # Main Streamlit chat application
+└── run_app.py      # Programmatic launcher for IDEs / packaging
 ```
+
+---
+
+## How It Works
+
+1. **Model discovery** — on startup, `ollama.list()` fetches all locally pulled models and populates the sidebar dropdown.
+2. **Message history** — each user and assistant turn is stored in `st.session_state.messages`, which is passed as context on every request.
+3. **Streaming** — `ollama.chat(..., stream=True)` yields tokens one at a time; the UI appends each chunk and shows a `▌` cursor until the response is complete.
+4. **History update** — the finished response is appended to session state so future turns have full context.
 
 ---
 
 ## Troubleshooting
 
-**"Could not fetch models. Is Ollama running?"**
-Ollama isn't started. Run `ollama serve` in a separate terminal before launching the app.
-
-**Empty model dropdown**
-You haven't pulled any models yet. Run `ollama pull <model-name>`, e.g.:
-```bash
-ollama pull llama3
-ollama pull mistral
-```
-
-**Error generating response**
-Ensure the selected model is fully downloaded and that Ollama is still running. Check `ollama list` in your terminal to confirm.
+| Symptom | Fix |
+|---|---|
+| *"Could not fetch models. Is Ollama running?"* | Run `ollama serve` in a separate terminal before launching the app. |
+| Empty model dropdown | You have no models pulled. Run `ollama pull <model>`, e.g. `ollama pull llama3`. |
+| Error generating response | Confirm the selected model is fully downloaded with `ollama list` and that Ollama is still running. |
 
 ---
 
 ## License
 
-MIT
+[MIT](LICENSE)
