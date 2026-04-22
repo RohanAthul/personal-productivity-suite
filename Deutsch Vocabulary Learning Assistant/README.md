@@ -1,4 +1,4 @@
-# 🇩🇪 Deutsch Vocabulary Manager
+# 🇩🇪 Deutsch Vocabulary Learning Assistant
 
 A Streamlit app for building and quizzing yourself on a personal German vocabulary database, backed by MongoDB.
 
