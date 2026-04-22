@@ -123,4 +123,5 @@ Each document stored in MongoDB follows this schema:
 - The `.env` file should be added to `.gitignore` to keep your credentials safe.
 - Answer checking is case-insensitive, so `To Go`, `to go`, and `TO GO` are all accepted.
 - `word_id` is auto-incremented based on the highest existing ID in each collection.
-- This is a work in progress, I have uploaded to git to keep a backup
+- This app will be improved over time
+- LLMs helped me with the syntax
