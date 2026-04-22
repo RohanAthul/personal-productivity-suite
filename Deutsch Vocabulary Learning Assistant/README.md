@@ -4,6 +4,16 @@ A Streamlit app for building and quizzing yourself on a personal German vocabula
 
 ---
 
+## Problem Statement
+When learning German, I found myself writing down new verbs and words as I encountered them but the notes would pile up and actually revisiting them was a pain. There was no real mechanism forcing me to recall anything; I'd just passively re-read a list.  
+
+For a while I managed this with a manual Excel sheet, which worked but was clunky and not exactly built for active recall. What I really wanted was something that would quiz me, pull a random word from my list and make me retrieve the translation from memory before revealing the answer.  
+That kind of active recall, even if imperfect, keeps things fresher than passive review.  
+
+Is this the most efficient way to learn a language? Probably not. But it's a genuine improvement over a static spreadsheet, and it scratches the itch perfectly. If you're in a similar situation, scribbling vocab into notes or spreadsheets and never really drilling it, give this a try. All you need is a free MongoDB account and you're good to go.
+
+---
+
 ## Features
 
 - **Add Vocabulary** — Save German words with translations, verb forms, example sentences, and dictionary links.
