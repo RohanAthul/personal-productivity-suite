@@ -63,9 +63,10 @@ Gemini 3 Flash chosen specifically because of its 1-million+ token context windo
 
 ```
 pdf-rag-bot/
-├── app.py          # Main application
-├── run_app.py      # Programmatic launcher for IDEs / packaging
-├── .env            # API key (not committed to version control)
+├── app.py               # Main application
+├── run_app.py           # Programmatic launcher for IDEs / packaging
+├── .env                 # API key (not committed to version control)
+├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
