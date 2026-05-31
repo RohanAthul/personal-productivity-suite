@@ -19,14 +19,12 @@ A lightweight Streamlit chat interface that lets you switch seamlessly between *
 
 ```
 LocalCloud LLM/
+└── README.md
 ├── app.py            # Main Streamlit application — UI, routing, chat loop
 ├── backend.py        # AI backend — Ollama and Gemini API integrations
-├── sidebar.py        # Sidebar component — model selection and parameter controls
-├── run_app.py        # Entry point script to launch the app
 ├── requirements.txt  # Python dependencies
-├── .env              # Environment variables (API keys — not committed)
-├── .gitignore
-└── README.md
+├── sidebar.py        # Sidebar component — model selection and parameter controls
+└── run_app.py        # Entry point script to launch the app
 ```
 
 ---
