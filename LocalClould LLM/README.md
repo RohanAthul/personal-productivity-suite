@@ -19,7 +19,7 @@ A lightweight Streamlit chat interface that lets you switch seamlessly between *
 
 ```
 LocalCloud LLM/
-└── README.md
+├── README.md
 ├── app.py            # Main Streamlit application — UI, routing, chat loop
 ├── backend.py        # AI backend — Ollama and Gemini API integrations
 ├── requirements.txt  # Python dependencies
