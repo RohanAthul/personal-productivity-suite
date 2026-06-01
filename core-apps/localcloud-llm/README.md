@@ -1,5 +1,6 @@
 # ⚡ LocalCloud LLM
 <img width="1100" height="1232" alt="image" src="https://github.com/user-attachments/assets/2766bd57-8624-4605-be13-ec336e971549" />
+
 A lightweight Streamlit chat interface that lets you switch seamlessly between **private local models** (via Ollama) and **cloud-based inference** (Google Gemini) — all from a single UI.
 
 ---
